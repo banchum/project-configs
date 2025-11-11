@@ -6,3 +6,9 @@ message:
   test2: '(수정)테스트 메세지2'
 
 message3: '테스트 메세지3'
+
+#설정 동적 갱신 모든 인스턴스에 refresh 설정 적용
+management:
+  endpoints:
+    web:
+      exposure: refresh
