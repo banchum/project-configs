@@ -6,6 +6,17 @@ spring:
       ribbon:
         enabled: false # Netflix Ribbon 대신 Spring Cloud LoadBalancer 사용
 
+feign:
+  client:
+    config:
+      default:  # 모든 클라이언트에 적용
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+      user-service:  # 특정 클라이언트에만 적용
+        connectTimeout: 10000
+        loggerLevel: basic
+
 #설정 동적 갱신 모든 인스턴스에 refresh 설정 적용
 management:
   endpoints:
