@@ -1,7 +1,14 @@
 #전역 공통 설정
 
+spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false # Netflix Ribbon 대신 Spring Cloud LoadBalancer 사용
+
 #설정 동적 갱신 모든 인스턴스에 refresh 설정 적용
 management:
   endpoints:
     web:
       exposure: refresh
+
