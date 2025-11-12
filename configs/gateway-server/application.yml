@@ -9,8 +9,8 @@ spring:
                                            # (Spring의 relaxed binding으로 lower-case-service-id 또는 lowerCaseServiceId 모두 허용)
 
       routes:                             # 수동으로 정의하는 정적 라우트 목록입니다.
-        - id: product-service             # 라우트 식별자(유일해야 함). 로그·디버깅 목적이나 actuator에서 사용됩니다.
-          uri: lb://product-service       # 라우트 목적지. 'lb://' 접두사는 클라이언트 사이드 로드밸런싱(lB)을 사용함을 의미합니다.
+        - id: hub-service                 # 라우트 식별자(유일해야 함). 로그·디버깅 목적이나 actuator에서 사용됩니다.
+          uri: lb://hub-service       # 라우트 목적지. 'lb://' 접두사는 클라이언트 사이드 로드밸런싱(lB)을 사용함을 의미합니다.
           # 실제 대상은 서비스 디스커버리(Eureka 등)에 등록된 product-service 인스턴스들입니다.
           predicates:
             - Path=/v1/product/**        # 이 라우트가 적용될 요청 경로 조건. 와일드카드 사용 가능.
