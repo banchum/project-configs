@@ -1,5 +1,5 @@
-#server:
-#  port: 3003
+server:
+  port: 3003
 
 message:
   test1: '(재수정)테스트 메세지1'
