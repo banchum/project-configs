@@ -4,7 +4,6 @@ spring:
     port: 5672                      # AMQP 포트(기본 5672). 브로커가 다른 포트를 쓰면 해당 포트로 설정.
     username: ${RABBITMQ_USERNAME}            # 연결에 사용할 사용자 계정명. 운영 환경에서는 비밀 관리 도구로 보관 권장.
     password: ${RABBITMQ_PASSWORD}         # 사용자 비밀번호. 절대 코드/레포지토리에 평문 저장 금지(환경변수/Vault 사용 권장).
-    virtual-host: /                 # 가상 호스트(VHost). 논리적 격리 단위로 여러 애플리케이션을 구분할 때 사용.
 
   cloud:
     loadbalancer:
@@ -60,6 +59,14 @@ management:
     web:
       exposure:
         include: refresh
+  zipkin:
+    tracing:
+      endpoint: "http://localhost:9411/api/v2/spans" # Zipkin 수집 서버의 엔드포인트 URL을 입력합니다.
+  tracing:
+    sampling:
+      probability: 1.0 # 샘플링 확률을 지정합니다. 1.0 = 100% (모든 요청을 수집)
+        # 개발/테스트 환경에서는 1.0이 편리하지만, 운영환경에서는 낮은 값(예: 0.1)이 권장됩니다.
+      # 0.0 ~ 1.0 범위의 실수 값을 사용합니다.
 
 keycloak:
   server-url: https://keycloak.code-factory.co.kr
@@ -100,3 +107,4 @@ resilience4j:
         limitForPeriod: 50  # 주기당 최대 50개 요청 허용
         limitRefreshPeriod: 1s  # 제한이 1초마다 초기화됨
         timeoutDuration: 0ms  # 허가 대기 시간 (0ms는 대기 없이 즉시 거부)
+
